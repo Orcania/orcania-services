@@ -1,4 +1,10 @@
-import { Component, ViewChild, ElementRef, HostListener, AfterViewInit } from '@angular/core';
+import {
+  Component,
+  ViewChild,
+  ElementRef,
+  HostListener,
+  AfterViewInit,
+} from '@angular/core';
 import { DragScrollComponent } from 'ngx-drag-scroll';
 import { ScrollService } from 'src/app/services/scroll.service';
 import { Renderer2 } from '@angular/core';
@@ -114,31 +120,59 @@ export class PortfolioComponent implements AfterViewInit {
       imgSrc: '/assets/ape-logo.svg',
       websiteUrl: 'https://theredapefamily.com/',
     },
+    {
+      title: 'Orcania DEX',
+      bgImgClass: 'bg-ape',
+      bgImgUrl: '/assets/bg-images/DEX.png',
+      description: () => {
+        return `
+          <p>
+          <br>
+          Your Gateway To DeFi 2.0
+          <br>
+          <br>
+          <br>
+          <br>  
+          </p>
+          `;
+      },
+      imgSrc: '/assets/services/DEX.svg',
+      websiteUrl: 'https://theredapefamily.com/',
+    },
   ];
 
   openUrl(url: string) {
     window.open(url, '_blank');
   }
-  constructor(private scrollService: ScrollService, private renderer: Renderer2) {}
-  
+  constructor(
+    private scrollService: ScrollService,
+    private renderer: Renderer2
+  ) {}
+
   @HostListener('window:resize')
   ngAfterViewInit() {
     // ...
 
-    this.renderer.listen(this.ds._contentRef.nativeElement, 'scroll', (event) => {
-      const panelWidth = this.containerRef.nativeElement.offsetWidth;
-      const scrollLeft = event.target.scrollLeft;
-      const panelNumber = Math.min(Math.round(scrollLeft / panelWidth) + 1, this.projects.length);
+    this.renderer.listen(
+      this.ds._contentRef.nativeElement,
+      'scroll',
+      (event) => {
+        const panelWidth = this.containerRef.nativeElement.offsetWidth;
+        const scrollLeft = event.target.scrollLeft;
+        const panelNumber = Math.min(
+          Math.round(scrollLeft / panelWidth) + 1,
+          this.projects.length
+        );
 
-      // Update the currentPanel variable
-      this.i = panelNumber;
-    });
+        // Update the currentPanel variable
+        this.i = panelNumber;
+      }
+    );
 
     if (this.framePortfolio)
-    this.scrollContainer = this.framePortfolio.nativeElement;
+      this.scrollContainer = this.framePortfolio.nativeElement;
     this.scrollService.scrollHeightPortfolio =
-    this.scrollContainer.scrollHeight;
-
+      this.scrollContainer.scrollHeight;
   }
 
   isScrollbarHidden: boolean = true;
@@ -151,9 +185,6 @@ export class PortfolioComponent implements AfterViewInit {
     | undefined;
   @ViewChild('portfolioContainer') containerRef!: ElementRef;
 
-
-
-
   //   /* const panelWidth = this.containerRef.nativeElement.offsetWidth;
   //   console.log(panelWidth)
   //   const scrollLeft = this.containerRef.nativeElement.scrollLeft;
@@ -163,12 +194,9 @@ export class PortfolioComponent implements AfterViewInit {
   //   // Update the currentPanel variable
   //   this.i = panelNumber;
 
-
-  
   //   // Update the navigation status */
   // }
 
-  
   moveLeft() {
     this.ds.moveLeft();
     if (this.i > 1) {
@@ -178,7 +206,7 @@ export class PortfolioComponent implements AfterViewInit {
 
   moveRight() {
     this.ds.moveRight();
-    if (this.i >= 1 && this.i < 6) {
+    if (this.i >= 1 && this.i < 6 )  {
       this.i++;
     }
   }
@@ -191,4 +219,4 @@ export class PortfolioComponent implements AfterViewInit {
         else if (windowWidth < 768){
           this.isScrollbarHidden = false;
         }*/
-} 
+}
