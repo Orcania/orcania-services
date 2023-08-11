@@ -1,0 +1,79 @@
+<div class="xl:mb-24" #frameAbout>
+    <div class="text-center">
+        <p class="text-[#0C8CE9] font-bold text-sm">WHO ARE WE?</p>
+        <p class="text-[32px] font-bold">About Us</p>
+    </div>
+    <div class="flex md:flex-row flex-col justify-center gap-10 lg:mx-0 mx-7 mt-12">
+        <div class="box border border-[#E7E7E7] rounded-lg pl-12 pr-5 pb-7 md:w-[492px] lg:h-[315px]">
+            <p class="title text-2xl font-bold pt-10">Leading Web3 Developement</p>
+            <p class="text-[#666363] text-[20px] leading-[25px] line-normal pt-2">
+                Orcania is a leading Web3 development
+                company established in the vibrant city
+                of Dubai, United Arab Emirates.
+                We specialize in consulting and 
+                developing advanced Web3 projects, 
+                assisting clients in transforming their 
+                ideas into functional applications
+                complete with sound business models, 
+                utility, and tokenomics.
+            </p>
+        </div>
+        <div class="box border border-[#E7E7E7] rounded-lg pl-12 pr-5 pb-7 md:w-[492px] lg:h-[315px]">
+            <p class="title text-2xl font-bold pt-10">Partners Not Services Providers</p>
+            <p class="text-[#666363] text-[20px] leading-[25px] line-normal pt-2">
+                As partners, we treat every project as our own. 
+                Our mission is to provide  comprehensive Web3 development 
+                solutions that help projects succeed in the rapidly evolving 
+                world of blockchain technology. We work closely with you to 
+                understand your unique needs and goals, and deliver top-quality
+                services that exceed your own expectations.
+            </p>
+        </div>
+    </div>
+    <div class="text-center md:mt-28 mt-24" >
+        <p class="text-[#0C8CE9] font-bold text-sm" >WHAT DO WE OFFER?</p>
+        <p class="text-[32px] font-bold" >Our Services</p>
+    </div>
+    <div class="mt-16 bg-image xl:block hidden xl:h-auto h-[300px]" #frameSmallAbout>
+        <div class="grid grid-cols-3 2xl:mx-54 mx-48 pb-12">
+            <div class="flex flex-col items-center mt-16" *ngFor="let item of items">
+                <div class="services-image flex justify-center">
+                    <img width="25px" [src]="item.image" />
+                </div>
+                <p class="text-white font-bold text-xl mt-3">{{item.title}}</p>
+                <p class="text-[#B5DAF6] mt-3">{{item.text1}}</p>
+                <p class="text-[#B5DAF6]">{{item.text2}}</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- lg screens and less -->
+
+    <div class="xl:hidden" #frameSmallAbout>
+        <drag-scroll [scrollbar-hidden]="false" [drag-scroll-y-disabled]="true" class="mt-8 bg-image h-[300px]" #navv>
+            <div class="py-20 text-center items-center md:w-1/2 w-full" *ngFor="let item of items; let i from index" drag-scroll-item >
+                <div class="services-image flex justify-center mx-auto">
+                    <img width="25px" [src]="item.image" />
+                </div>
+                <p class="text-white font-bold text-xl mt-3">{{item.title}}</p>
+                <p class="text-[#B5DAF6] mt-2">{{item.text1}}</p>
+                <p class="text-[#B5DAF6]">{{item.text2}}</p>
+            </div>
+        </drag-scroll>
+        <div class="flex translate-y-[-40px] justify-center text-white text-[60px] gap-3.5">
+            <button 
+                (click)="moveTo(point.id)"
+                (ontouchend)="moveTo(point.id)"
+                *ngFor="let point of points" 
+                class="flex justify-center items-center rounded-3xl w-[11px] h-[11px]"
+                [ngClass]="selected === point.id ? 'border-3 border-[#0C8CE9]' : '' "
+            >
+                <img width="9px" height="9px" [src]="point.img" />
+            </button>
+        </div>
+    </div>
+
+    <!---->
+
+</div>
+

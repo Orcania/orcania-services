@@ -1,0 +1,74 @@
+<div class="overflow-hidden" #framePortfolio>
+  <div
+    class="bg-rectangle1 2xl:pl-96 xl:pl-80 xl:pt-10 md:pb-0 pt-20 md:h-[300px] h-[400px]"
+  >
+    <div class="relative line ml-12">
+      <p class="text-[#0C8CE9] font-bold text-sm mr-9">OUR WORK?</p>
+      <p class="text-[32px] font-bold">Portfolio</p>
+      <div class="flex md:gap-48 sm:gap-12">
+        <p>
+          Our Portfolio showcases a selection of our
+          <br />
+          completed projects
+        </p>
+        <div class="md:translate-y-[-35px]">
+          <div class="buttons md:block hidden lg:ml-52">
+            <button
+              class="button py-4 px-5 rounded-md hover:bg-[#F7F9FB]"
+              (click)="moveLeft()"
+            >
+              <span class="icon">
+                <img src="/assets/arrow-left.svg" />
+              </span>
+            </button>
+            <button
+              class="button py-4 px-5 rounded-md hover:bg-[#F7F9FB]"
+              (click)="moveRight()"
+            >
+              <span class="icon">
+                <img src="/assets/arrow-right.svg" />
+              </span>
+            </button>
+          </div>
+          <p class="md:mt-6 translate-y-[-35px] md:translate-y-[0px]">
+            {{ i }}/6
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <drag-scroll
+    class="projects 2xl:ml-96 xl:pl-10 xl:ml-80 xl:translate-y-[-110px] md:translate-y-[-90px] translate-y-[-190px] sm:mx-4 mx-7"
+    [drag-scroll-y-disabled]="true"
+    #navv
+  >
+    <!-- Component.html -->
+    <div
+      *ngFor="let project of projects"
+      [ngClass]="project.bgImgClass"
+      [ngStyle]="{ 'background-image': 'url(' + project.bgImgUrl + ')' }"
+      class="border-2 border-transparent rounded-2xl text-white md:p-12 pl-10 py-10 lg:w-[940px] w-full mr-14"
+      drag-scroll-item
+      #portfolioContainer
+    >
+      <div class="flex gap-3 justify-start items-center">
+        <img class="md:mb-0 mb-7" [src]="project.imgSrc" />
+        <div class="font-bold text-3xl ">
+          <p class="title">{{ project.title }}</p>
+        </div>
+      </div>
+      <div [innerHTML]="project.description()" class="w-44 md:w-2/4"></div>
+
+      <button
+        class="flex justify-center items-center gap-3 text-white bg-[#0C8CE9] w-[190px] h-[50px] rounded-3xl sm:mt-20 mt-8 ripple"
+        (click)="openUrl(project.websiteUrl)"
+      >
+        <img src="/assets/app-window.svg" />
+        <p class="font-semibold">Visit Website</p>
+      </button>
+    </div>
+  </drag-scroll>
+  <div
+    class="bg-rectangle2 translate-y-[-130px] translate-x-[130px] h-[300px] lg:block hidden"
+  ></div>
+</div>

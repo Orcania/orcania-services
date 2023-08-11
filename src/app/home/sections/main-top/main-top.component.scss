@@ -1,0 +1,37 @@
+@media  screen and (min-width: 1920px) {
+    .bg-image{
+        background-image:url('/assets/bg-images/globe.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center 80px;
+    }
+}
+
+@media screen and (min-width: 640px){
+    .bg-image{
+        background-image:url('/assets/bg-images/globe.png');
+        background-size: contain 1000px;
+        background-repeat: no-repeat;
+        background-position: center 80px;
+    }
+}
+
+@media screen and (max-width: 640px){
+    .bg-image{
+        background-image:url('/assets/bg-images/globe-mobile.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: top;
+    }
+}
+
+.backdrop {
+    backdrop-filter: blur(4px);
+    background: rgba(255, 255, 255, 0.15)
+}
+
+.line::before{
+    content: url('/assets/line.svg');
+    position: absolute;
+    transform: translate(-12px , 6px);
+}

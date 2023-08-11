@@ -1,0 +1,47 @@
+.line::before{
+    content: url('/assets/line2.svg');
+    position: absolute;
+    transform: translate(-15px , 5px)
+}
+
+@media screen and (min-width: 768px) {
+    .bg-rectangle1{
+        background-image: url('/assets/bg-images/rectangle.png');
+        background-size: 1200px 300px;
+        background-repeat: no-repeat;
+        background-position: 0px -20px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .bg-rectangle1{
+        background-image: url('/assets/bg-images/rectangle.png');
+        background-size: 1200px 400px;
+        background-repeat: no-repeat;
+        background-position: 0px -20px;
+    }
+}
+
+@media screen and (min-width: 640px) {
+    .bg-ape{
+       
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: right;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .bg-ape{
+       
+        background-size: 450px 400px;
+        background-repeat: no-repeat;
+    }
+}
+
+.bg-rectangle2{
+    background-image: url('/assets/bg-images/rectangle2.png');
+    background-size: 1000px 230px;
+    background-repeat: no-repeat;
+    background-position: right;
+}
